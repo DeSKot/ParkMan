@@ -15,7 +15,9 @@ services:
       - ./:/var/www/park-man
     networks:
       - park-man-local-network
-  db:
+    depends_on:
+        - park-man-db
+  park-man-db:
       image: mysql:8.0
       restart: always
       environment:
@@ -28,10 +30,12 @@ services:
           - '3307:3306'
       expose:
           # Opens port 3306 on the container
-          - '3307'
+          - '3306'
           # Where our data will be persisted
       volumes:
-          - my-db:/va
+          - park-man-db:/va
+      networks:
+          - park-man-local-network
   nginx_park-man:
     image: nginx:1.18.0-alpine
     container_name: park-man-nginx
@@ -48,3 +52,4 @@ networks:
         external: true
 volumes:
   my-datavolume:
+  park-man-db:
