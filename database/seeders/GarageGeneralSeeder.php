@@ -15,6 +15,6 @@ class GarageGeneralSeeder extends Seeder
      */
     public function run()
     {
-        GaragesGeneral::factory()->count(1000)->create();
+        GaragesGeneral::factory()->count(25000)->create();
     }
 }

@@ -14,4 +14,4 @@
 ## Add test data
 
  - docker exec -it park-man-app bash
-1. add 1000 garages with owners -> php artisan db:seed --class=GarageGeneralSeeder (default 1000)
+1. add 1000 garages with owners -> php artisan db:seed --class=GarageGeneralSeeder [(default 1000)](database/seeders/GarageGeneralSeeder.php)

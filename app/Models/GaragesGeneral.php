@@ -11,5 +11,8 @@ class GaragesGeneral extends Model
 
     protected $table = 'garages_general';
 
-
+    public function owner()
+    {
+        return $this->belongsTo(GaragesOwner::class, 'owner_id');
+    }
 }
