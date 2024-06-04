@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ParkMan API",
+    "description": "Here you can see all routes which are available on BackEnd.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/garage": {
+      "get": {
+        "tags": [
+          "Garage"
+        ],
+        "description": "Display Garage info",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Filter by country name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ownerName",
+            "in": "query",
+            "description": "Filter by owner name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "Filter by latitude",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "Filter by longitude",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination -> default page = 1",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "Pagination -> perPage default per-page value = 15",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "Pagination -> orderBy selected row from response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "description": "Pagination -> orderBy selected row from response (default = id)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "data": {
+                    "garages": [
+                      {
+                        "garage_id": 1,
+                        "name": "Stephania Schamberger",
+                        "hourly_price": "640.08",
+                        "currency": "ISK",
+                        "contact_email": "lera06@example.org",
+                        "point": "46.480361 -111.031928",
+                        "country": "Guatemala",
+                        "owner_id": 1,
+                        "garage_owner": "Unique Cummings Sr."
+                      },
+                      {
+                        "garage_id": 2,
+                        "name": "Ms. Violette Champlin",
+                        "hourly_price": "753.72",
+                        "currency": "BZD",
+                        "contact_email": "hoppe.monty@example.net",
+                        "point": "-26.949830 164.264435",
+                        "country": "Hong Kong",
+                        "owner_id": 2,
+                        "garage_owner": "Alvis Bernhard"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Not found data by filters",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": false,
+                  "data": "Not found Garage data by your filter query request in file /var/www/park-man/app/Services/Garage/Handler.php line 30"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
